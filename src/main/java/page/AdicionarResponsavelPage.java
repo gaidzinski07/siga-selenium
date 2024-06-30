@@ -6,26 +6,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdicionarResponsavelPage {
+public class AdicionarResponsavelPage extends AbstractPage{
 	
-	@FindBy(xpath = "extrair")
+	@FindBy(xpath = "/html/body/div[4]/form/fieldset[1]/div/div[1]/div/input")
 	private WebElement nome;
 
-	@FindBy(xpath = "extrair")
+	@FindBy(xpath = "/html/body/div[4]/form/fieldset[1]/div/div[2]/div/input")
 	private WebElement descricao;
 	
-	@FindBy(xpath = "extrair")
+	@FindBy(xpath = "/html/body/div[4]/form/div/div/div/button[1]")
 	private WebElement botaoSalvar;
 	
-	private WebDriver driver;
+	public final String ERRO_CAMPOS_INVALIDOS = "Preencha os campos corretamente";
 	
 	public AdicionarResponsavelPage (WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 	
-	public void preencherNomeDescricacao(String _nome, String _descricao) {
-		nome.sendKeys(_nome);
-		descricao.sendKeys(_descricao);
+	public void preencherNomeDescricacao(String nome, String descricao) {
+		this.nome.sendKeys(nome);
+		this.descricao.sendKeys(descricao);
 	}
 	
 	public void submit() {
