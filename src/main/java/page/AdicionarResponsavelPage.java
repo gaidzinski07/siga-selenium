@@ -13,12 +13,6 @@ public class AdicionarResponsavelPage {
 
 	@FindBy(xpath = "extrair")
 	private WebElement descricao;
-
-	@FindBy(xpath = "extrair")
-	private WebElement tipo;
-
-	@FindBy(xpath = "extrair")
-	private WebElement lotacao;
 	
 	@FindBy(xpath = "extrair")
 	private WebElement botaoSalvar;
@@ -29,24 +23,9 @@ public class AdicionarResponsavelPage {
 		this.driver = driver;
 	}
 	
-	public AdicionarResponsavelPage preencherNomeDescricacao(String _nome, String _descricao) {
-		if(nome == null || descricao == null) {
-			System.out.println("Os campos não existem no contexto do código.");
-			return null;
-		}
+	public void preencherNomeDescricacao(String _nome, String _descricao) {
 		nome.sendKeys(_nome);
 		descricao.sendKeys(_descricao);
-		return PageFactory.initElements(driver, AdicionarResponsavelPage.class);
-	}
-	
-	public AdicionarResponsavelPage preencherTipoLotacao(String _tipo, String _lotacao) {
-		if(tipo == null || lotacao == null) {
-			System.out.println("Os campos não existem no contexto do código.");
-			return null;
-		}
-		tipo.sendKeys(_tipo);
-		lotacao.sendKeys(_lotacao);
-		return PageFactory.initElements(driver, AdicionarResponsavelPage.class);
 	}
 	
 	public void submit() {

@@ -19,6 +19,8 @@ public class AdicionarFeriadoPage extends AbstractPage {
 	
 	@FindBy(xpath="/html/body/div[4]/div/div[2]/form/div[2]/div/div/input[2]")
 	private WebElement deleteBtn;
+	
+	public final String ERRO_NOME_FERIADO_VAZIO = "Preencha a descricao do feriado";
 		
 	public AdicionarFeriadoPage(WebDriver driver) {
 		super(driver);

@@ -1,5 +1,6 @@
 package page;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,6 +23,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 @TestMethodOrder(OrderAnnotation.class)
 public class AdicionarFeriadoPageTest {
+	
 	public WebDriver driver;
 	protected Wait<WebDriver> wait;
 	private String baseUrl;
@@ -66,5 +68,13 @@ public class AdicionarFeriadoPageTest {
 		List<String> after = page.tableContent();
 		assertFalse(after.contains(nomeFeriado));
 		assertTrue(before.size() > after.size());
+	}
+	
+	@Test
+	@Order(3)
+	public void addFeriadoVazioTest() {
+		page.preencherFeriadoESubmeter("");
+		String msg = page.lerAlert();
+		assertEquals(page.ERRO_NOME_FERIADO_VAZIO, msg);
 	}
 }
